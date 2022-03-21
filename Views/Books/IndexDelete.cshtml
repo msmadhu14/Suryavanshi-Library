@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SuryavanshiLibrary.Models.Book>
+@{
+    ViewData["Title"] = "IndexDelete";
+}
+
+<h1>Delete Existing Book</h1>
+<div>
+    <a asp-action="Index">Back to List</a> &nbsp; &nbsp;
+    <a asp-action="BookManagement">Back to Book</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ISBN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publisher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IssuedStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ISBN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Publisher.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IssuedStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsDeleted)
+                </td>
+                <td>
+                    <a asp-action="Delete"  asp-route-id="@item.ISBN">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
